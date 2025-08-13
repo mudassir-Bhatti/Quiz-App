@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    font-family: "Jost", sans-serif;
+    background-color: #353535;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+h1{
+    border-bottom: 2px solid black;
+}
+#question{
+    padding: 10px;
+    padding-left: 0;
+     user-select: none;
+}
+
+.container{
+    
+    /* min-height: 50%; */
+    height: auto;
+   width: 450px;
+    padding: 30px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+
+}
+#options{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    gap: 10px;
+}
+.button{
+    width: 95%;
+    text-align: start;
+    padding: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+     user-select: none;
+
+}
+.button:hover{
+    background-color: #353535;
+    color: white;
+    user-select: none;
+}
+
+#submit{
+    padding: 10px;
+    margin-top: 20px;
+    min-width: 30%;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #3c6e71;
+    color: aliceblue;
+    transition: all 0.2s ease;
+    user-select: none;
+
+}
+#submit:hover{
+    transform: scale(1.05);
+}
+#submit:active{
+    transform: scale(0.98);
+}
