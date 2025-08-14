@@ -91,13 +91,48 @@ const questions = [
     }
 ];
 
-
+let timeLeft=10;
+let countDown;
 let theQuestion =document.querySelector("#question");
-let options = document.querySelectorAll(".button");
+let options= document.querySelectorAll(".button");
 let submitBtn=document.querySelector("#submit");
 
 let currentIndex=0;
 let score=0;
+
+let beforeStart=()=>{
+    currentIndex=0;
+    document.querySelector("#before").style.display="";
+
+    theQuestion.style.display="none";
+    options.forEach((option)=>{
+        option.style.display="none";
+    })
+    submitBtn.style.display="none";
+    document.querySelector("#timer").style.display="none";
+    clearInterval(countDown);
+    document.querySelector("#startBtn").style.display="block";
+
+};
+beforeStart();
+
+
+document.querySelector("#startBtn").addEventListener("click",()=>{
+     console.log("Clicked");
+    document.querySelector("#before").style.display="none";
+    theQuestion.style.display="block";
+    options.forEach((option)=>{
+        option.style.display="";
+    })
+    submitBtn.style.display="block";
+    document.querySelector("#timer").style.display="";
+    startQuiz();
+   
+})
+
+
+
+
 
 let startQuiz=()=>{
     currentIndex=0;
@@ -109,7 +144,36 @@ let startQuiz=()=>{
 
 
 
+ let startTimer=()=>{
+    timeLeft=10;
+    document.querySelector("#time").innerText=timeLeft;
+
+     countDown= setInterval(()=>{
+        timeLeft--;
+        document.querySelector("#time").innerText=timeLeft;
+        if(timeLeft==0){
+            clearInterval(countDown);
+
+            options.forEach((option)=>{
+                option.disabled=true;
+                // document.querySelector("#timer").style.display="none";
+                document.querySelector("#submit").style.display="block";
+            })
+        }
+
+
+        
+ },1000)
+
+
+ };
+//  startTimer();
+
+ 
+
+
 let displayQuestions=()=>{
+    startTimer();
     options.forEach((option)=>{
         option.style.backgroundColor="";
         option.style.color="";
@@ -133,7 +197,7 @@ let displayQuestions=()=>{
     options[3].value=questions[currentIndex].answer[3].correct;
 
 };
-displayQuestions();
+// displayQuestions();
 
  options.forEach((option)=>{
     option.addEventListener("click",()=>{
@@ -153,6 +217,7 @@ displayQuestions();
 
 
         }
+        clearInterval(countDown);
       
         options.forEach((option)=>{
             option.disabled=true;
@@ -170,8 +235,11 @@ displayQuestions();
     if(currentIndex==9){
         options.forEach((opt)=>{
         opt.style.display="None";
-        submitBtn.innerText="Restart";
+        submitBtn.style.display="none";
+
         document.querySelector("#question").innerText=`Your score is ${score} out of 10`;
+        document.querySelector("#timer").style.display="none";
+        currentIndex==0;
     
         
 
@@ -179,6 +247,7 @@ displayQuestions();
     }
 
     else{
+        // startTimer();
         currentIndex++;
         displayQuestions();
 

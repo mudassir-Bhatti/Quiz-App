@@ -42,6 +42,33 @@ h1{
     flex-direction: column;
     gap: 10px;
 }
+
+#before{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#startBtn{
+    padding: 10px;
+    margin-top: 20px;
+    min-width: 30%;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #3c6e71;
+    color: aliceblue;
+    transition: all 0.2s ease;
+    user-select: none;
+
+}
+#startBtn:hover{
+    transform: scale(1.05);
+}
+#startBtn:active{
+    transform: scale(0.98);
+}
+
 .button{
     width: 95%;
     text-align: start;
